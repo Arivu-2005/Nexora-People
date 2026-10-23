@@ -18,7 +18,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      await login(email, password);
+      await login(email.trim().toLowerCase(), password.trim());
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
@@ -28,6 +28,7 @@ const Login = () => {
   };
 
   const handleQuickFill = (demoEmail) => {
+    setError('');
     setEmail(demoEmail);
     setPassword('Password123!');
   };
